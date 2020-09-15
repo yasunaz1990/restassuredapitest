@@ -20,8 +20,6 @@ public class DemoTest {
                .prettyPrint();
     }
 
-    // 2nds
-
     @Test
     public void practiceTest2() {
         String url = "https://swapi.dev/api/people/1/";
