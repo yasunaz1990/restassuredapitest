@@ -7,6 +7,7 @@ import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+// Test Class: container of test cases
 public class DemoTest {
 
     @Test
@@ -28,6 +29,11 @@ public class DemoTest {
                 .andReturn();
         response.getBody().prettyPrint();
     }
-}
 
+
+    @Test
+    public void practiceTest3() {
+
+    }
+}
 
