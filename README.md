@@ -43,6 +43,8 @@ external libraries.
 * Download and install Git v2.0+ 
 
 ## Set-up Instructions 
+You need to have following test execution set up 
+![screenshot](/images/test_execution_setup.png)
 
 ## How to write Test Cases 
 
