@@ -75,7 +75,6 @@ public class ReqresGetTest {
         String endpoint = "/api/users?page=2";
 
 
-
         // Test Steps
         RestAssured.baseURI = baseURI;
         RequestSpecification reqSpec = RestAssured.given();
@@ -85,8 +84,6 @@ public class ReqresGetTest {
         // Test Assertion
         SoftAssert sAssert = new SoftAssert();
 
-
         sAssert.assertAll();
     }
-
 }
