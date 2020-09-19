@@ -4,7 +4,6 @@ import com.jayway.jsonpath.JsonPath;
 import io.restassured.RestAssured;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
 
@@ -24,8 +23,8 @@ public class GETRequestPracticeTest {
         //    of the response ( Status line, Headers, Body )
 
         // Status line
-        System.out.println(  response.statusLine()  );
-        System.out.println(  response.statusCode()  );
+        System.out.println(response.statusLine());
+        System.out.println(response.statusCode());
 
         // Headers
         Headers headers = response.headers();
@@ -52,9 +51,10 @@ public class GETRequestPracticeTest {
         System.out.println("Ad Compnay: " + adCompVal);
     }
 }
+
 /*
 $.data.email
 $.data.first_name
 $.data.last_name
 $.ad.company
- */
+*/
