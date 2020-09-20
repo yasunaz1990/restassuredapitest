@@ -74,3 +74,8 @@ mvn test -Dtestof="test1" -Denv="Staging"
 ```
 
 ## How to get Report 
+All the test execution reports are avaialbe as HTML report on following folder after test execution 
+```
+ report
+   |--[HTML] reports
+```
