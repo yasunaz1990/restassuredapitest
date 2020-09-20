@@ -1,9 +1,9 @@
+package testcase;
+
 import io.restassured.RestAssured;
-import io.restassured.http.Headers;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ContactListTest {
@@ -93,4 +93,22 @@ Connection=keep-alive
 
 
      */
+
+
+    @Test
+    public void postRequest() {
+        String payload = "{" +
+                "    \"email\": \"user23@example.com\"," +
+                "    \"password\": \"SuperSecretPassword123\"" +
+                "}";
+        RestAssured.baseURI = "https://craftplacer.trexion.com";
+        RequestSpecification spec = RestAssured.given();
+        //spec.hea
+        spec.header("Content-Type", "Application/json");
+        spec.body(payload);
+        Response response = spec.post("/pcl/api/contacts/me");
+        System.out.println( response.getStatusLine() );
+        response.getBody().prettyPrint();
+
+    }
 }

@@ -1,10 +1,7 @@
+package testcase;
 
-import groovy.json.JsonOutput;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
-import io.restassured.specification.RequestSpecification;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class DemoTest {
@@ -29,6 +26,7 @@ public class DemoTest {
 
         response.getBody().prettyPrint();
     }
+
 }
 
 
