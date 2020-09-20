@@ -2,11 +2,14 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Demo Test Suites">
     <!-- Test Listener -->
+    <listeners>
+        <listener class-name="utility.TestExecutionListener"/>
+    </listeners>
 
     <!-- Test          -->
     <test name="EndpointVerification">
         <classes>
-            <class name="testcase.DemoTest"/>
+            <class name="testcase.ContactListTest"/>
         </classes>
     </test>
 </suite>

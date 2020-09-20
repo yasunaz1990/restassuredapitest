@@ -5,6 +5,7 @@ import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
+import utility.Steps;
 
 public class ContactListTest {
 
@@ -14,21 +15,22 @@ public class ContactListTest {
         // Request specification
         RestAssured.baseURI = "http://3.13.86.142:3000";
         RequestSpecification reqSpec = RestAssured.given();
+        Steps.log("Registered Endpoint URI, and preparing a requst");
 
         // This will actually send the request
         // and gets a response back
+        Steps.log("Sending a GET requst to endopoint:  /contacts");
         Response response = reqSpec.request(Method.GET, "/contacts");
+        Steps.log("Recieved a response from a server");
+
 
         // This response object contains all the data sent by the server
         // we can extract
         // Status line
         // Headers
         // Body
-        System.out.println("Let's see its status line:");
-        System.out.println(response.getStatusLine());
-        System.out.println("\n\n");
+        Steps.log("Status line: " + response.getStatusLine());
 
-        System.out.println("Let's see its headers:");
         System.out.println(response.getHeaders());
         System.out.println("\n\n");
 
