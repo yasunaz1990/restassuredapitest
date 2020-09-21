@@ -1,4 +1,4 @@
-package testcase;
+package testcases;
 
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
@@ -8,6 +8,17 @@ import org.testng.annotations.Test;
 import utility.Steps;
 
 public class DemoTest {
+
+
+    @Test
+    public void assertionDemo() {
+
+
+
+
+    }
+
+
 
     @Test
     public void practiceTest() {
