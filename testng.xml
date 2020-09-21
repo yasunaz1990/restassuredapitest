@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Demo Test Suites">
     <!-- Test Listener -->
     <listeners>
@@ -9,7 +9,7 @@
     <!-- Test          -->
     <test name="EndpointVerification">
         <classes>
-            <class name="testcases.ContactListTest"/>
+            <class name="testcases.PublicContactListTest"/>
         </classes>
     </test>
 </suite>
