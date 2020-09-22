@@ -1,13 +1,14 @@
 package testcases;
 
 import com.jayway.jsonpath.JsonPath;
+import commons.ApiConfig;
 import io.restassured.RestAssured;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
 
-public class GETRequestPracticeTest {
+public class GETRequestPracticeTest extends ApiConfig {
 
     @Test
     public void get_request_practice1() {

@@ -1,6 +1,7 @@
 package testcases;
 
 
+import commons.ApiConfig;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
@@ -9,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class ReqresGetTest {
+public class ReqresGetTest extends ApiConfig {
 
     @Test
     public void client_can_get_all_user_status_line() {

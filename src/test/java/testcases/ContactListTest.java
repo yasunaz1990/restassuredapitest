@@ -1,5 +1,6 @@
 package testcases;
 
+import commons.ApiConfig;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
@@ -7,7 +8,7 @@ import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
 import utility.Steps;
 
-public class ContactListTest {
+public class ContactListTest extends ApiConfig {
 
     @Test
     public void client_can_get_all_contacts() {
@@ -36,7 +37,6 @@ public class ContactListTest {
 
         System.out.println("Let's see its body:");
        // response.getBody().prettyPrint();
-
     }
 
 
@@ -85,20 +85,10 @@ public class ContactListTest {
         System.out.println(response.headers().get("Content-Type").getValue().contains("application/json"));
     }
 
-    /*
-X-Powered-By=Express
-Content-Type=application/json; charset=utf-8
-Content-Length=1063534
-ETag=W/"103a6e-a7ZZMZS6xiVmT8G8f5lz9tsrU9A"
-Date=Tue, 15 Sep 2020 23:35:56 GMT
-Connection=keep-alive
-
-
-     */
-
 
     @Test
     public void postRequest() {
+
         String payload = "{" +
                 "    \"email\": \"user23@example.com\"," +
                 "    \"password\": \"SuperSecretPassword123\"" +

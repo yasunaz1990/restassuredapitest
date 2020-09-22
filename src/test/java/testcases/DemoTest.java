@@ -1,5 +1,6 @@
 package testcases;
 
+import commons.ApiConfig;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
@@ -7,7 +8,7 @@ import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
 import utility.Steps;
 
-public class DemoTest {
+public class DemoTest extends ApiConfig {
 
 
     @Test
