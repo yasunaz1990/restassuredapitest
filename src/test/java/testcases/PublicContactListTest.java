@@ -1,5 +1,7 @@
 package testcases;
 
+
+import commons.ApiConfig;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -11,100 +13,114 @@ import java.io.FileReader;
 import java.io.IOException;
 ;
 
-public class PublicContactListTest {
+
+public class PublicContactListTest extends ApiConfig {
 
     @Test
-    public void register_single_user() throws IOException {
-        // Test Data
-        String endpoint = "/pcl/auth/register";
+    public void register_single_user() {
+
+        String payload = "{" +
+                "    \"email\": \"nijat9987@example.com\"," +
+                "    \"password\": \"SuperSecretPassword123\"" +
+                "}";
+
+        RestAssured.baseURI = base_uri;
+        RequestSpecification spec = RestAssured.given();
+        spec.header("Content-Type", "Application/json");
+        spec.body(payload);
+
+        Response response = spec.post("/pcl/auth/register");
+
+        System.out.println( response.getStatusLine() );
+
+    }
+
+
+    @Test
+    public void register_single_user_file_payload() {
+
+        String path = getPayloadPath("newUser");
+        String payload = read(path).trim();
+
+        RestAssured.baseURI = base_uri;
+        RequestSpecification spec = RestAssured.given();
+        spec.header("Content-Type", "Application/json");
+        spec.body(payload);
+        System.out.println("PYALOAD: >" + payload);
+
+        Response response = spec.post("/pcl/auth/register");
+        System.out.println( response.getStatusLine() );
+    }
+
+
+    @Test
+    public void login_single_user() {
 //        String payload = "{" +
-//                "    \"email\": \"nijatexample11232@example.com\"," +
+//                "    \"email\": \"nijat9987@example.com\"," +
 //                "    \"password\": \"SuperSecretPassword123\"" +
 //                "}";
 
-        String filePath = System.getProperty("user.dir") + "/src/test/resources/payloads/newUser.txt";
-        String payLoad = read(filePath);
+        String path = getPayloadPath("newUser");
+        String payload = read(path).trim();
 
-        // Test Step
-        Steps.log("About to send POST register a user request");
-        RestAssured.baseURI = "https://craftplacer.trexion.com";
+        RestAssured.baseURI = base_uri;
         RequestSpecification spec = RestAssured.given();
-        spec.header("Content-Type", "Application/json; charset=utf-8");
-        spec.header("Accept", "Application/json");
-        spec.body(payLoad.trim());
+        spec.header("Content-Type", "Application/json");
+        spec.body(payload);
 
-        Steps.logJson(payLoad.trim());
+        Response response = spec.post("/pcl/auth/login");
 
-        // send the request and store the response
-        Steps.log("Sending the request and received the response");
-        Response response = spec.post(endpoint);
+        System.out.println(response.getStatusLine());
+        String sessionToken = response.getBody().asString();
+        System.out.println(response.getBody().asString());
 
-        Steps.log("Status Line: " + response.getStatusLine());
-        Steps.log("Response body: ");
-        Steps.logJson(response.getBody().prettyPrint());
+    }
 
-        // Test Assertion
-        Assert.assertTrue(response.statusCode() == 201);
+
+    @Test
+    public void logout_single_user() {
+
+        // 1. Login the user
+        String path = getPayloadPath("newUser");
+        String payload = read(path).trim();
+
+        RestAssured.baseURI = base_uri;
+        RequestSpecification spec = RestAssured.given();
+        spec.header("Content-Type", "Application/json");
+        spec.body(payload);
+        Response response = spec.post("/pcl/auth/login");
+        String sessionToken = response.getBody().asString();
+
+        // 2. Logout the user
+        RestAssured.baseURI = base_uri;
+        response = RestAssured.given()
+                .header("Authorization", sessionToken)
+                .get("/pcl/auth/logout");
+
+        System.out.println("Logged out a user: > " + response.getStatusLine());
+    }
+
+
+
+    @Test
+    public void get_all_contacts() {
+
+        RestAssured.baseURI = base_uri;
+        RequestSpecification spec = RestAssured.given();
+        Response response = spec.accept("Application/json")
+                                .get("/pcl/api/contacts");
+        System.out.println("Status Line> " + response.getStatusLine());
+        System.out.println("Response Body> \n" + response.getBody().prettyPrint());
+
     }
 
     @Test
-    public void login_single_user() throws IOException {
-        // Test Data
-        String endpoint = "/pcl/auth/login";
-        String filePath = System.getProperty("user.dir") + "/src/test/resources/payloads/newUser.txt";
-        String payLoad = read(filePath);
-
-        // Test Step
-        Steps.log("About to send POST login a user request");
-        RestAssured.baseURI = "https://craftplacer.trexion.com";
+    public void get_perticular_contact() {
+        RestAssured.baseURI = base_uri;
         RequestSpecification spec = RestAssured.given();
-        spec.header("Content-Type", "Application/json; charset=utf-8");
-        spec.body(payLoad.trim());
-
-        Steps.logJson(payLoad.trim());
-        // send the request and store the response
-        Steps.log("Sending the request and received the response");
-        Response response = spec.post(endpoint);
-
-        Steps.log("Status Line: " + response.getStatusLine());
-        Steps.log("Response body: ");
-        Steps.logJson(response.getBody().prettyPrint());
-
-        // Test Assertion
-        Assert.assertTrue(response.statusCode() == 200);
+        Response response = spec.accept("Application/json")
+                .get("/pcl/api/contacts/2");
+        System.out.println("Status Line> " + response.getStatusLine());
+        System.out.println("Response Body> \n" + response.getBody().asString());
     }
-
-
-    public String read(String path) {
-        String finalText = null;
-        try {
-            FileReader fr = new FileReader(path);
-            BufferedReader br = new BufferedReader(fr);
-            StringBuilder sb = new StringBuilder();
-
-            String line = br.readLine();
-            while (line != null) {
-                sb.append(line);
-                sb.append("\n");
-                line = br.readLine();
-            }
-            finalText = sb.toString();
-            br.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return finalText;
-    }
-
-
-    public void pause(int second) {
-        try{
-            Thread.sleep(second * 1000);
-        }catch (Exception e) {
-
-        }
-    }
-
 }
