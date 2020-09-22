@@ -1,5 +1,11 @@
 package commons;
 
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.specification.RequestSpecification;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -25,5 +31,12 @@ public class ApiConfig {
             e.printStackTrace();
         }
         return finalText;
+    }
+
+    public String getPayloadPath(String fileName) {
+        String rootPath = System.getProperty("user.dir");
+        String payloadPath = "/src/test/resources/payloads/"+fileName+".json";
+        String fullPath = rootPath + payloadPath;
+        return fullPath;
     }
 }
