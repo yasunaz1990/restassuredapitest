@@ -1,0 +1,13 @@
+{
+  "firstName": "Eldora",
+  "lastName": "Dilshat",
+  "email": "pdilshat@gmail.com",
+  "location": {
+    "city": "Boston, MA",
+    "country": "USA"
+  },
+  "employer": {
+    "jobTitle": "Software Tester",
+    "company": "Apple"
+  }
+}
