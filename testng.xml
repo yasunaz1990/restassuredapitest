@@ -9,7 +9,7 @@
     <!-- Test          -->
     <test name="EndpointVerification">
         <classes>
-            <class name="testcases.ContactListTest"/>
+            <class name="testcases.ToDoListTest"/>
         </classes>
     </test>
 </suite>

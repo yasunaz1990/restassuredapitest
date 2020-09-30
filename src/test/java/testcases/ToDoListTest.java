@@ -3,24 +3,34 @@ package testcases;
 import commons.ApiConfig;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
 public class ToDoListTest extends ApiConfig {
 
 
     @Test
-    public void register_single_user() {
-        String payload = getPayload("todoNewUser");
-        RestAssured.baseURI = todoList_base_uri;
-        Response respons = RestAssured.given()
+    public void PBTW_T227() {
+
+        JSONObject json = new JSONObject();
+        json.put("name", "Nijat Muhtar");
+        json.put("email", "nmuhtar23sdfasddadf23@gmail.com");
+        json.put("password", "1232323123!");
+        json.put("age", new Integer(20));
+        String payload = json.toString();
+
+
+        Response response = RestAssured.given()
                 .contentType("Application/json")
                 .body(payload)
                 .post("/user/register");
-        System.out.println(respons.statusCode());
-        System.out.println(respons.getBody().asString());
+
+        response.getBody().prettyPrint();
+        setUserToken(extractData(response.getBody().asString(), "$.token"));
+        System.out.println("here we got: " +  getUserToken());
     }
 
-    @Test
+   // @Test
     public void login_single_user() {
 
         String payload = "{" +
@@ -28,7 +38,6 @@ public class ToDoListTest extends ApiConfig {
                 "\"password\": \"12345678\"" +
                 "}";
 
-        RestAssured.baseURI = todoList_base_uri;
         Response respons = RestAssured.given()
                 .contentType("Application/json")
                 .body(payload)
@@ -41,7 +50,7 @@ public class ToDoListTest extends ApiConfig {
     }
 
 
-    @Test
+   // @Test
     public void test_case() {
         //PUT update on previously extracted user ID
         String updatePayload = getPayload("updateSingleContact");
