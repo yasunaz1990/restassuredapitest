@@ -30,7 +30,7 @@ public class ToDoListTest extends ApiConfig {
         System.out.println("here we got: " +  getUserToken());
     }
 
-   // @Test
+    @Test
     public void login_single_user() {
 
         String payload = "{" +
@@ -50,7 +50,7 @@ public class ToDoListTest extends ApiConfig {
     }
 
 
-   // @Test
+    @Test
     public void test_case() {
         //PUT update on previously extracted user ID
         String updatePayload = getPayload("updateSingleContact");
