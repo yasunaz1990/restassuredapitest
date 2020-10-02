@@ -50,7 +50,7 @@ public class ApiConfig {
         return JsonPath.read(json, query);
     }
 
-    @BeforeMethod
+
     public void setUp() {
         RestAssured.baseURI = "https://api-nodejs-todolist.herokuapp.com";
     }
