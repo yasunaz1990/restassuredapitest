@@ -6,7 +6,7 @@ import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
-public class ToDoListTest extends ApiConfig {
+public class EndpointVerificationTest extends ApiConfig {
 
 
     @Test
