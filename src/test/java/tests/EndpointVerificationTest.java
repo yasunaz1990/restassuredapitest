@@ -1,4 +1,4 @@
-package testcases;
+package tests;
 
 import commons.ApiConfig;
 import io.restassured.RestAssured;

@@ -1,4 +1,4 @@
-package testcases;
+package tests;
 
 public class ApiEndToEndTest {
 }

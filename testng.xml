@@ -9,25 +9,25 @@
     <!-- Test          -->
     <test name="EndpointVerification">
         <classes>
-            <class name="testcases.EndpointVerificationTest"/>
+            <class name="tests.EndpointVerificationTest"/>
         </classes>
     </test>
 
     <test name="Smoke">
         <classes>
-            <class name="testcases.EndpointVerificationTest"/>
+            <class name="tests.EndpointVerificationTest"/>
         </classes>
     </test>
 
     <test name="Regression">
         <classes>
-            <class name="testcases.EndpointVerificationTest"/>
+            <class name="tests.EndpointVerificationTest"/>
         </classes>
     </test>
 
     <test name="E2E">
         <classes>
-            <class name="testcases.EndpointVerificationTest"/>
+            <class name="tests.EndpointVerificationTest"/>
         </classes>
     </test>
 </suite>
