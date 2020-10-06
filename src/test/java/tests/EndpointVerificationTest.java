@@ -103,4 +103,43 @@ public class EndpointVerificationTest extends ApiConfig {
         System.out.println(responseStatusLine);
         System.out.println(responseStatusCode);
     }
+
+
+    @Test(priority = 6)
+    public void upload_user_profile_pic() {
+
+        String picPath = System.getProperty("user.dir") + "/images/profile.png";
+
+        Response respons = RestAssured.given()
+                .header("Authorization", getUserToken() )
+                .contentType("multipart/form-data")
+                .multiPart("avatar", picPath)
+                .post("/user/me/avatar");
+
+        System.out.println("-----------TEST CASE 6 ----------------");
+        System.out.println(respons.getStatusLine());
+        respons.getBody().prettyPrint();
+    }
+
+
+
+    @Test
+    public void convert_nextChar() {
+        String str = "hello";
+        String ret = "";
+
+        System.out.println(str);
+
+        for(int i = 0; i < str.length(); i++) {
+            // each character
+            char curr = str.charAt(i);
+           // System.out.print(curr + " ");
+            curr++;
+           // System.out.print(curr);
+           // System.out.println();
+            ret += curr;
+        }
+
+        System.out.println(ret);
+    }
 }
