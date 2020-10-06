@@ -1,7 +1,9 @@
 package commons;
 
+import com.github.javafaker.Faker;
 import com.jayway.jsonpath.JsonPath;
 import io.restassured.RestAssured;
+import org.json.simple.JSONObject;
 import org.testng.annotations.BeforeMethod;
 
 import java.io.BufferedReader;
@@ -9,18 +11,66 @@ import java.io.FileReader;
 
 public class ApiConfig {
 
-    private static String userToken = "";
+    private  String userToken;
+    private  String sessionToken;
+    private  String userEamil;
+    private  String userPass;
+
 
     public void setUserToken(String newToken) {
         userToken = newToken;
     }
 
     public String getUserToken() {
-        return userToken;
+       String authoToken = "Bearer " + userToken;
+        return authoToken;
+    }
+
+    public void setSessionToken(String newToken) {
+        sessionToken = newToken;
+    }
+
+    public String getSessionToken() {
+        String authoToken = "Bearer " + sessionToken;
+        return authoToken;
+    }
+
+    // ============ PAYLOAD ====================//
+
+    public String getNewUserPayload() {
+        Faker faker = new Faker();
+        String name = faker.name().fullName();
+        userEamil = faker.internet().emailAddress();
+        userPass = "Pass123!";
+
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("email", userEamil);
+        json.put("password", userPass);
+        json.put("age", 10);
+        String payload = json.toString();
+        return payload;
     }
 
 
-    public String read(String filePath) {
+    public String getCredentialPayload() {
+        JSONObject json = new JSONObject();
+        json.put("email", userEamil);
+        json.put("password", userPass);
+        String payload = json.toString();
+        return payload;
+    }
+
+    public String getUpdatePayload() {
+        JSONObject json = new JSONObject();
+        json.put("age", 25);
+        String payload = json.toString();
+        return payload;
+    }
+
+
+    // ============ PAYLOAD FILE ====================//
+    private String read(String filePath) {
         String finalText = null;
         try {
             FileReader fr = new FileReader(filePath);
@@ -50,7 +100,7 @@ public class ApiConfig {
         return JsonPath.read(json, query);
     }
 
-
+    @BeforeMethod
     public void setUp() {
         RestAssured.baseURI = "https://api-nodejs-todolist.herokuapp.com";
     }

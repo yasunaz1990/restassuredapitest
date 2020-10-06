@@ -44,7 +44,7 @@ external libraries.
 
 ## Inner Works of the Framework 
 This is a diagram that details the internal structure of our framework.  Mulitple parts of the
-code works together to bring successful automated test executions. 
+code works together to bring successful automated test executions. :
 ![screenshot](/images/Framework.png)
 
 ## Set-up Instructions 
