@@ -64,6 +64,24 @@ public class EndpointVerificationTest extends ApiConfig {
 
 
     @Test(priority = 4)
+    public void add_single_task() {
+        String payload = "{\n" +
+                "\t\"description\": \"reading book\"\n" +
+                "}";
+
+        Response respons = RestAssured.given()
+                .header("Authorization", getSessionToken())
+                .contentType("Application/json")
+                .body(payload)
+                .post("/task");
+
+        System.out.println("-----------TEST CASE 3.5 ----------------");
+        System.out.println(respons.getStatusLine());
+        respons.getBody().prettyPrint();
+    }
+
+
+    @Test(priority = 5)
     public void logout_single_user() {
 
         String payload = getCredentialPayload();
@@ -79,8 +97,8 @@ public class EndpointVerificationTest extends ApiConfig {
     }
 
 
-    @Test(priority = 5)
-    public void update_user_profile() {
+    @Test(priority = 6)
+    public void update_user_profile_info() {
         //PUT update on previously extracted user ID
         System.out.println("By the way, user regist token is: " + getUserToken());
         JSONObject json = new JSONObject();
@@ -88,13 +106,12 @@ public class EndpointVerificationTest extends ApiConfig {
         String payload = json.toString();
 
 
-        String endpoint = "/user/me";
         Response response = RestAssured.given()
                 .header("Authorization", getUserToken())
                 .contentType("Application/json")
                 .accept("Application/json")
                 .body(payload)
-                .put(endpoint);
+                .put("/user/me");
 
         System.out.println("-----------TEST CASE  5 ----------------");
         response.getBody().prettyPrint();
@@ -105,13 +122,13 @@ public class EndpointVerificationTest extends ApiConfig {
     }
 
 
-    @Test(priority = 6)
+    //@Test(priority = 6)
     public void upload_user_profile_pic() {
 
         String picPath = System.getProperty("user.dir") + "/images/profile.png";
 
         Response respons = RestAssured.given()
-                .header("Authorization", getUserToken() )
+                .header("Authorization", getUserToken())
                 .contentType("multipart/form-data")
                 .multiPart("avatar", picPath)
                 .post("/user/me/avatar");
@@ -123,23 +140,15 @@ public class EndpointVerificationTest extends ApiConfig {
 
 
 
-    @Test
-    public void convert_nextChar() {
-        String str = "hello";
-        String ret = "";
+    @Test(priority = 7)
+    public void delete_user() {
+        Response response = RestAssured.given()
+                .header("Authorization", getUserToken())
+                .accept("Application/Json")
+                .delete("/user/me");
 
-        System.out.println(str);
-
-        for(int i = 0; i < str.length(); i++) {
-            // each character
-            char curr = str.charAt(i);
-           // System.out.print(curr + " ");
-            curr++;
-           // System.out.print(curr);
-           // System.out.println();
-            ret += curr;
-        }
-
-        System.out.println(ret);
+        System.out.println("-----------TEST CASE 7 ----------------");
+        System.out.println(response.getStatusLine());
+        response.getBody().prettyPrint();
     }
 }
