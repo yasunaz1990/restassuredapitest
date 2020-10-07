@@ -32,6 +32,9 @@ public class TestExecutionListener implements ITestListener {
     public void onTestStart(ITestResult testcase) {
         eachTestCase = extent.createTest(testcase.getName());
         Steps.init(eachTestCase);
+        String description = testcase.getMethod().getDescription();
+        Steps.log("Test Case Name: " + description);
+
     }
 
     public void onTestSuccess(ITestResult result) {

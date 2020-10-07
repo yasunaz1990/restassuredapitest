@@ -7,7 +7,7 @@
     </listeners>
 
     <!-- Test          -->
-    <test name="EndpointVerification">
+    <test name="EndpointVeri">
         <classes>
             <class name="tests.EndpointVerificationTest"/>
         </classes>
