@@ -4,6 +4,12 @@
 ### Dependencies 
 This api automation framework depends on following 
 external libraries. 
+- API automation :  RestAssured Library 
+- JSON data qury :  JsonPath Library
+- Test case creation & management :   TestNG Library 
+- Test Execution Report :  Extent Spark Report 
+- Test Data Generation :  Faker Library 
+
 ```xml
 <dependency>
     <groupId>io.rest-assured</groupId>
@@ -16,6 +22,25 @@ external libraries.
     <artifactId>testng</artifactId>
     <version>6.14.3</version>
 </dependency>
+
+<dependency>
+   <groupId>com.aventstack</groupId>
+   <artifactId>extentreports</artifactId>
+   <version>4.1.7</version>
+</dependency>
+
+<dependency>
+   <groupId>com.jayway.jsonpath</groupId>
+   <artifactId>json-path</artifactId>
+   <version>2.4.0</version>
+</dependency>
+
+<dependency>
+   <groupId>com.github.javafaker</groupId>
+   <artifactId>javafaker</artifactId>
+   <version>1.0.2</version>
+</dependency>
+
 ```
 
 ### Framework Project Structure Diagram
