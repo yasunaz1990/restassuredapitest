@@ -49,6 +49,11 @@
            <version>1.0.2</version>
        </dependency>
 
+       <dependency>
+           <groupId>com.adaptavist</groupId>
+           <artifactId>tm4j-junit-</artifactId>
+       </dependency>
+
    </dependencies>
 
     <build>

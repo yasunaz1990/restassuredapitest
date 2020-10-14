@@ -1,9 +1,32 @@
-# API testing automation framework for RESTful Services
+# API Testing Automation Framework
+Lightweight API testing automation framework that utilizes RestAssured library for sending and 
+parsing HTTP requests and responses.  It offers flexible command-based test environment and test 
+type selection capabilities and automatically generates an HTML based test execution report after each test execution.  
+Also, it updates the test case execution status of corresponding automated manual test cases in JIRA.
 
-## Framework Structure 
+
+## Folder Structure 
+```
+|-reports                        #  stores all the generated test execution reports 
+|-pom.xml                        #  project object model file for the maven project configuration
+|-testng.xml                     #  configuration files for the test structures and test case managements 
+|-src
+   |---test
+         |----java               
+                |-[+]testcase    #  all test class that contains test cases are here
+                |-[+]utility     #  all the utility class are here
+                |-[+]commons     #  all the commonly used class are here  
+         |----resources         
+                |-[d]payloads    #  all the json files used in tests are stored here 
+              
+|-.gitignore                     #  git ignore config file 
+|-READMD.md                      #  you are currently viewing this file 
+```
+
+
 ### Dependencies 
-This api automation framework depends on following 
-external libraries. 
+This test automation framework depends on following 
+external libraries.
 - API automation :  RestAssured Library 
 - JSON data qury :  JsonPath Library
 - Test case creation & management :   TestNG Library 
@@ -43,41 +66,25 @@ external libraries.
 
 ```
 
-### Framework Project Structure Diagram
-```
-|-reports                        #  all the generated test execution reports are here 
-|-pom.xml                        #  project object model file for the maven software
-|-testng.xml                     #  TestNG configuration files for the test structures and groupings 
-|-src
-   |---test
-         |----java               #  all the java source files needs to stored in this folder 
-                |-[+]testcase    #  java class package, all test class will be stored here 
-                |-[+]utility     #  java class package, all the utility class will be stored here 
-                |-[+]commons     #  java class package, all the commons class wil be stored here 
-         |----resources          #  resources folder, json files, xml files, excel files and reports 
-                |-[d]payloads    #  all the json files used in tests are stored here 
-                |-[d]xml         #  all the xml files used in tests are stored here 
-|-.gitignore                     #  git ignore config file 
-|-READMD.md                      #  you are currently viewing this file 
-```
+
 
 ## Pre-requisites
+You're system must have following tools and plugins to be able to use this framework. 
 * Download and install Chrome or Firefox browser  ( viewing report )
 * Download and install JDK v1.8 + 
 * Download and install Apache Maven v3.0+
 * Download and install Git v2.0+ 
 
 ## Set-up Instructions 
-You need to have following test execution set up 
+You can use this framework for the following tests 
 ![screenshot](/images/test_execution_setup.png)
 
-## How to write Test Cases 
 
-## How to run Tests 
+## Test Triggering Commands
 All the test triggering is done through maven commands, this framework supports multiple different types of 
 test executions such as smoke, regression, and end-to-end on different possible environment such as QA, Staging, and 
-UAT. 
-#### Executing specific tests 
+UAT.
+
 If you would like to exeucte a specific test that are stated on testng.xml file
 Choose from the following command: 
 
@@ -96,7 +103,7 @@ If you would like to execute a specific test on specific environment ( default=U
 mvn test -Dtestof="E2E" -Denv="Staging"
 ```
 
-## How to get Report 
+## Reports
 All the test execution reports are avaialbe as HTML report on following folder after test execution 
 ```
  report
