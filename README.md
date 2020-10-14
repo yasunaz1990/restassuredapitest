@@ -42,7 +42,7 @@ external libraries.
 
 
 ### Framework Class Diagrams 
-![internals](/images/framework.png  "Title" {width=500px height=500px})
+<img src="/images/framework.png" width=500px height=500px/>
 
 
 ### Set-up Instructions 
