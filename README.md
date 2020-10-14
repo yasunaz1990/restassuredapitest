@@ -42,8 +42,8 @@ external libraries.
 
 
 ### Framework Class Diagrams 
+![internals](/images/framework.png | width=100)
 
-<img src="/images/framework.png" width=100/>
 
 ### Set-up Instructions 
 You can use this framework for the following tests 
