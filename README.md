@@ -42,7 +42,7 @@ external libraries.
 
 
 ### Framework Class Diagrams 
-![internals](/images/framework.png)
+![internals](/images/Framework.png)
 
 
 ### Set-up Instructions 
