@@ -187,5 +187,4 @@ public class EndpointVerificationTest extends ApiTestConfig {
             softAssert.assertAll();
     }
 
-
 }
