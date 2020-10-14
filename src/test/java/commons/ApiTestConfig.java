@@ -2,7 +2,10 @@ package commons;
 
 import com.github.javafaker.Faker;
 import com.jayway.jsonpath.JsonPath;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.json.simple.JSONObject;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,8 +13,11 @@ import java.io.FileReader;
 public class ApiTestConfig {
 
     private String token;
+    private String sessionToken;
+    private String name;
     private String userEmail;
     private String userPass;
+    private int age = 10;
 
     public void setToken(String newToken) {
         if(newToken == null) {
@@ -23,6 +29,30 @@ public class ApiTestConfig {
     public String getToken() {
         return token;
     }
+
+    public void setSessionToken(String input){
+        if(input == null) {
+            throw new NullPointerException("Token cannot be empty");
+        }
+        sessionToken = input;
+    }
+
+    public String getSessionToken() {
+        return sessionToken;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
 
     private String read(String filePath) {
         String finalText = null;
@@ -50,23 +80,23 @@ public class ApiTestConfig {
         return payload;
     }
 
-    public String extractData(String responseJson, String query) {
-        String extractedData = JsonPath.read(responseJson, query);
-        return extractedData;
+    public <T> T extractData(String json, String query) {
+        T extracted = JsonPath.read(json, query);
+        return extracted;
     }
 
     //======== Payload ===========//
     public String generateNewUserPayload() {
         Faker faker = new Faker();
-        String fakeName = faker.name().fullName();
+        name = faker.name().fullName();
         userEmail = faker.internet().emailAddress();
         userPass = "Pass234!";
 
         JSONObject json = new JSONObject();
-        json.put("name", fakeName);
+        json.put("name", name);
         json.put("email",userEmail);
         json.put("password",userPass );
-        json.put("age", 10);
+        json.put("age", age);
 
         return json.toString();
     }
@@ -78,4 +108,14 @@ public class ApiTestConfig {
         return json.toString();
     }
 
+    public String getBody(Response response){
+        return response.getBody().asString();
+    }
+
+    @BeforeMethod
+    public void setUp() {
+        RestAssured.baseURI = "https://api-nodejs-todolist.herokuapp.com";
+    }
+
 }
+

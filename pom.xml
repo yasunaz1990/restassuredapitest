@@ -64,7 +64,7 @@
                     <properties>
                         <property>
                             <name>testnames</name>
-                            <value>${testof}</value>
+                            <value>${testType}</value>
                         </property>
                     </properties>
                 </configuration>
