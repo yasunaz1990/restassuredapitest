@@ -4,7 +4,8 @@ parsing HTTP requests and responses.  It offers flexible command-based test envi
 type selection capabilities and automatically generates an HTML based test execution report after each test execution.  
 Also, it updates the test case execution status of corresponding automated manual test cases in JIRA.
 
-###$ Pre-requisites
+
+### Pre-requisites
 You're system must have following tools and plugins to be able to use this framework. 
 * Download and install Chrome or Firefox browser  ( viewing report )
 * Download and install JDK v1.8 + 
@@ -41,7 +42,7 @@ external libraries.
 
 
 ### Framework Class Diagrams 
-
+![internals](/images/framework.png)
 
 ### Set-up Instructions 
 You can use this framework for the following tests 
