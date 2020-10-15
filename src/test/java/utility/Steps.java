@@ -6,7 +6,6 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 
 public class Steps {
 
-    //
     private static ExtentTest eachTestCaseSection;
 
 
