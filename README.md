@@ -48,7 +48,6 @@ external libraries.
 ### Set-up Instructions 
 You can use this framework by integrating into existing Jenkins pipeline. Recommended jenkins set-up is as
 follows:
->>>>>>> 58056a36a4391ca5499238fdcd03adcbc5c2c7cd
 ![screenshot](/images/test_execution_setup.png)
 
 
