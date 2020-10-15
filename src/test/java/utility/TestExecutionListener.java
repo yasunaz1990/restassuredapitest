@@ -12,7 +12,7 @@ public class TestExecutionListener implements ITestListener {
 
     private ExtentReports extent;       // Report manager
     private ExtentSparkReporter spark;  // Report writer
-    private ExtentTest eachTestCase;    // Each test case
+    private ExtentTest eachTestCaseSection;    // Each test case section
 
 
     // ============ Test Context Related ============= //
@@ -41,8 +41,8 @@ public class TestExecutionListener implements ITestListener {
     // This method will be executed before each test case in any selected
     // Test context executes. It creates test cases section in the report
     public void onTestStart(ITestResult testcase) {
-        eachTestCase = extent.createTest(testcase.getName());
-        Steps.init(eachTestCase);
+        eachTestCaseSection = extent.createTest(testcase.getName());
+        Steps.init(eachTestCaseSection);
         String description = testcase.getMethod().getDescription();
         Steps.log("Test Case Name: " + description);
     }
@@ -51,13 +51,13 @@ public class TestExecutionListener implements ITestListener {
     // This method will be executed after test case in the test case section
     // resulted in success
     public void onTestSuccess(ITestResult result) {
-        eachTestCase.pass("This test case has passed");
+        eachTestCaseSection.pass("This test case has passed");
     }
 
     // This method will be executed after test case in the test cases section
     // resulted in failure
     public void onTestFailure(ITestResult result) {
-        eachTestCase.fail("This test case has failed");
+        eachTestCaseSection.fail("This test case has failed");
     }
 
     // This method will be executed after test case in the test case section
