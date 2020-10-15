@@ -22,7 +22,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.14.3</version>
+            <version>7.1.0</version>
         </dependency>
 
        <dependency>
@@ -47,11 +47,6 @@
            <groupId>com.github.javafaker</groupId>
            <artifactId>javafaker</artifactId>
            <version>1.0.2</version>
-       </dependency>
-
-       <dependency>
-           <groupId>com.adaptavist</groupId>
-           <artifactId>tm4j-junit-</artifactId>
        </dependency>
 
    </dependencies>
