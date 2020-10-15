@@ -46,7 +46,8 @@ external libraries.
 
 
 ### Set-up Instructions 
-You can use this framework for the following tests 
+You can use this framework by integrating into existing Jenkins pipeline. Recommended jenkins set-up is as
+follows:
 ![screenshot](/images/test_execution_setup.png)
 
 
