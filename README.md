@@ -42,12 +42,13 @@ external libraries.
 
 
 ### Framework Class Diagrams 
-![internals](/images/framework.png)
+![internals](/images/Framework.png)
 
 
 ### Set-up Instructions 
 You can use this framework by integrating into existing Jenkins pipeline. Recommended jenkins set-up is as
-follows: 
+follows:
+>>>>>>> 58056a36a4391ca5499238fdcd03adcbc5c2c7cd
 ![screenshot](/images/test_execution_setup.png)
 
 
